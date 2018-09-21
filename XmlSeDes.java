@@ -43,7 +43,7 @@ public class XmlSeDes {
         if (!parsed.contains(hash) && !parseQueue.containsKey(hash)) parseQueue.put(hash, obj);
     }
 
-    public void saveToXml(Object obj, String fileName) throws IOException {
+    public void serialize(Object obj, String fileName) throws IOException {
         String result = "";
         parseQueue.clear();
 
@@ -75,7 +75,7 @@ public class XmlSeDes {
         System.out.println(result);
     }
 
-    public Object loadFromXml(String fileName) throws Exception {
+    public Object deSerialize(String fileName) throws Exception {
         Path path = Paths.get(fileName);
         if (!Files.exists(path, LinkOption.NOFOLLOW_LINKS)) throw new Exception("File [" + fileName + "] not exists.");
         else if (!Files.isRegularFile(path)) throw new Exception("File [" + fileName + "] is not regular file.");

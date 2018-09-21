@@ -46,16 +46,16 @@ public class Main {
         serializeTest(seDes, plainObj, "PlainObj.xml", "\r\nPlainObject:");
         serializeTest(seDes, childObject, "ChildObject.xml", "\r\nChildObject:");
         serializeTest(seDes, null, "NullObject.xml", "\r\nNull object:");
-        serializeTest(seDes, arrayList, "ArrayList.xml", "\r\nnArrayList:");
+        serializeTest(seDes, arrayList, "ArrayList.xml", "\r\nArrayList:");
     }
 
     static void serializeTest(XmlSeDes seDes, Object obj, String fileName, String message) {
         System.out.println(message);
         try {
-            seDes.saveToXml(obj, fileName);
+            seDes.serialize(obj, fileName);
 
             System.out.println("Читаем взад");
-            Object newObj = seDes.loadFromXml(fileName);
+            Object newObj = seDes.deSerialize(fileName);
 
             if (obj == null) {
                 System.out.println(newObj == null ? ":) объекты идентичны" : ":( что-то не то прочитали");
